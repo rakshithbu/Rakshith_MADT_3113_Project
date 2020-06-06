@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><button type="button" class="book-now-btn" onclick="booknow()">Book Now</button></div>
+                        <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -84,59 +84,42 @@
             <div class="col-md-6">
                 <div class="card">
                     <header class="card-header">
-
-                        <h4 class="card-title mt-2" style="text-align: center">Sign up</h4>
+                        <h4 class="card-title mt-2" style="text-align: center">Book Room</h4>
                     </header>
                     <article class="card-body">
                         <form>
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <label>Name </label>
-                                    <input type="text" class="form-control" placeholder="" id="firstName">
-                                    <span style="color: red" id="firstNameError" style="display: none"></span>
-                                </div> <!-- form-group end.// -->
+                                    <label>Email Address</label>
+                                    <input type="text" class="form-control" placeholder="" id="emailID">
+                                    <span style="color: red" id="userNameError" style="display: none"></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="col form-group">
-                                    <label>Last name</label>
-                                    <input type="text" class="form-control" placeholder="" id="lastName">
-                                    <span style="color: red" id="lastNameError" style="display: none"></span>
-                                </div> <!-- form-group end.// -->
-                            </div> <!-- form-row end.// -->
-                            <div class="form-group">
-                                <label>Email address</label>
-                                <input type="email" class="form-control" placeholder="" id="emailId">
-                                <span style="color: red" id="emailError" style="display: none"></span>
-                                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                <label>Select Room Type</label>
 
-                            </div> <!-- form-group end.// -->
-                            <div class="form-group">
-                                <label class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Male">
-                                    <span class="form-check-label"> Male </span>
-                                </label>
-                                <label class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" value="Female">
-                                    <span class="form-check-label"> Female</span>
-                                </label>
+                                <select name="cars" id="rooms">
+                                    <option value="deluxRoom">Delux Room</option>
+                                    <option value="superRoom">Super Room</option>
+                                    <option value="singleRoom">Single Room</option>
+                                    <option value="doubleRoom">Double Room</option>
+                                </select>
+                                </div>
+                            </div>
 
-                                <span style="color: red" id="genderError" style="display: none"></span>
-                            </div> <!-- form-group end.// -->
-                            <div class="form-group">
-                                <label>Date of Birth</label>
-                                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-                                    <span style="color: red" id="dateError" style="display: none"></span>
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label>Email Address</label>
+                                    <input type="text" class="form-control" placeholder="" id="numberOfDays">
+                                    <span style="color: red" id="numberOfDaysError" style="display: none"></span>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>Create password</label>
-                                <input class="form-control" type="password" id="password">
-                                <span style="color: red" id="passwordError" style="display: none"></span>
-                            </div> <!-- form-group end.// -->
-                            <div class="form-group">
-                                <button type="button" class="btn btn-primary btn-block" onclick="registerUser()"> Register  </button>
-                            </div> <!-- form-group// -->
-                            <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
+                                <button type="button" class="btn btn-primary btn-block" onclick="book()">Book</button>
+                            </div>
                         </form>
                     </article> <!-- card-body end .// -->
-                    <div class="border-top card-body text-center">Have an account? <a href="login.html">Log In</a></div>
                 </div> <!-- card.// -->
             </div> <!-- col.//-->
 

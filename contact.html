@@ -46,7 +46,7 @@
                                 </div>                       
                             </div>
                             <div class="col-sm-6 visible-sm">
-                                <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                                <div class="text-right"><button type="button" class="book-now-btn" onclick="booknow()">Book Now</button></div>
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                                 <nav class="navbar navbar-default">
@@ -70,7 +70,7 @@
                                 </nav>
                             </div>
                             <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                                <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                                <div class="text-right"><button type="button" class="book-now-btn" onclick="booknow()">Book Now</button></div>
                             </div>
                         </div>
                     </div>
@@ -99,45 +99,23 @@
                     <div class="col-md-6 contact-form">
                         <h3>Send a <span>Message</span></h3>
                         <form action="#" method="post">
-                            <input type="text" class="form-control" name="Name" placeholder="Name" required="">
-                            <input type="email" class="form-control" name="Email" placeholder="Email" required="">
-                            <textarea class="form-control" name="Message" placeholder="Message Here...." required=""></textarea>
-                            <input type="submit" class="submit-btn" value="Submit">
+                            <input type="text" class="form-control" name="Name" placeholder="Name" required="" id="name">
+                            <input type="email" class="form-control" name="Email" placeholder="Email" required="" id="emailId">
+                            <textarea class="form-control" name="Message" placeholder="Message Here...." required="" id="message"></textarea>
+                            <input type="button" class="submit-btn" value="Submit" onclick="sendQuery()">
                         </form>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </section>
 
-            <!---map--->
-            <section class="offspace-70">
-                <div class="map">
-                    <div class="container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101257.12284776446!2d-77.56330202084071!3d37.52477641775529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b111095799c9ed%3A0xbfd83e6de2423cc5!2sRichmond%2C+VA%2C+USA!5e0!3m2!1sen!2sin!4v1488891294599"  frameborder="0" style="border:0; width: 100%; height: 400px" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
+
             <!---footer--->
             <footer>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3 col-sm-6 col-xs-12 width-set-50">
                             <div class="footer-details">
-                                <h4>Get in touch</h4>
-                                <ul class="list-unstyled footer-contact-list">
-                                    <li>
-                                        <i class="fa fa-map-marker fa-lg"></i>
-                                        <p> 701 Old York Drive Richmond USA.</p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-phone fa-lg"></i>
-                                        <p><a href="tel:+1-202-555-0100"> +1-202-555-0100</a></p>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-envelope-o fa-lg"></i>
-                                        <p><a href="mailto:demo@info.com"> demo@info.com</a></p>
-                                    </li>
-                                </ul>
                                 <div class="footer-social-icon">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>                           
@@ -145,42 +123,13 @@
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
                                     <a href="#"><i class="fa fa-youtube-play"></i></a>
                                 </div>
-                                <div class="input-group" id="subscribe">
-                                    <input type="text" class="form-control subscribe-box" value="" name="subscribe" placeholder="EMAIL ID">
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn subscribe-button"><i class="fa fa-paper-plane fa-lg"></i></button>
-                                    </span>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12 width-50 width-set-50">
-                            <div class="footer-details">
-                                <h4>explore</h4>
-                                <ul class="list-unstyled footer-links">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="rooms.html">Rooms</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="#">Dinning</a></li>
-                                    <li> <a href="news.html">News</a></li>
-                                    <li class="active"> <a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="footer-details">
-                                <h4>Now On Instagram</h4>
-                                <div class="row">
-                                    <div class="instagram-images">
-                                        <div id="instafeed"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="copyright">
-                        &copy; 2017 All right reserved. Designed by <a href="http://www.themevault.net/" target="_blank">ThemeVault.</a>
+                        &copy; 2017 All right reserved.
                     </div>
 
                 </div>

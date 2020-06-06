@@ -45,8 +45,18 @@ $(document).ready(function () {
         objectStore.createIndex('emailId', 'emailId', { unique: true });
         objectStore.createIndex('sex', 'sex', { unique: false });
         objectStore.createIndex('dob', 'dob', { unique: false });
-        objectStore.createIndex('password', 'password', { unique: false })
+        objectStore.createIndex('password', 'password', { unique: false });
 
+        let messageStore = db.createObjectStore('messages', { keyPath: 'id', autoIncrement:true });
+        messageStore.createIndex('name', 'name', { unique: false });
+        messageStore.createIndex('emailId', 'emailId', { unique: false });
+        messageStore.createIndex('messages', 'messages', { unique: false });
+        console.log('Database setup complete');
+
+        let bookRoom=  db.createObjectStore('bookRoom', { keyPath: 'id', autoIncrement:true });
+        bookRoom.createIndex('emailId', 'emailId', { unique: false });
+        bookRoom.createIndex('roomType', 'roomType', { unique: false });
+        bookRoom.createIndex('numberOfDays', 'numberOfDays', { unique: false });
         console.log('Database setup complete');
     }
 
@@ -77,7 +87,7 @@ function registerUser() {
                         $("#emailError").text("");
                     }, 6000);
                 }else{
-                    objectStore.add({firstName:$("#firstName").val(),lastName:$("#lastName").val(),emailId:$("#emailId").val(),sex:$("input[name='gender']:checked").val(),dob:$("date").val(),password:$("password").val() });
+                    objectStore.add({firstName:$("#firstName").val(),lastName:$("#lastName").val(),emailId:$("#emailId").val(),sex:$("input[name='gender']:checked").val(),dob:$("#date").val(),password:$("#password").val() });
                 }
             };
         }
@@ -155,7 +165,7 @@ function login(){
             var flag = false;
             var name ='';
             arrayOfResult.forEach(function(element, index) {
-                if((element.emailId === $("#emailId").val()) &&
+                if((element.emailId === $("#userName").val()) &&
                     (element.password === $("#password").val())){
                     flag = true;
                     name = element.firstName+" "+ element.lastName;
@@ -163,11 +173,29 @@ function login(){
             });
 
             if(flag){
-                alert("Welcome "+element.)
+                alert("Welcome "+name+" you have succesfuly logged in");
             }else{
-                objectStore.add({firstName:$("#firstName").val(),lastName:$("#lastName").val(),emailId:$("#emailId").val(),sex:$("input[name='gender']:checked").val(),dob:$("date").val(),password:$("password").val() });
+                alert("Entered username or password is incorrect");
             }
         };
     }
 
+}
+
+function sendQuery(){
+    var db = request.result;
+    let transaction = db.transaction(['messages'], 'readwrite');
+    let objectStore = transaction.objectStore('messages');
+    objectStore.add({name:$("#name").val(),message:$("#message").val(),emailId:$("#emailId").val()});
+}
+
+function booknow(){
+    window.location.href = "bookRoom.html";
+}
+
+function book(){
+    var db = request.result;
+    let transaction = db.transaction(['messages'], 'readwrite');
+    let objectStore = transaction.objectStore('messages');
+    objectStore.add({name:$("#name").val(),message:$("#message").val(),emailId:$("#emailId").val()});
 }
