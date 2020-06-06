@@ -647,9 +647,10 @@ footer a{
 .copyright {
     font-size: 16px;
     letter-spacing: 1px;
-    margin-top: 40px;
-    text-align: center;
+    margin-top: -34px;
+    text-align: left;
 }
+
 .copyright > a{
     color: #ff4157;
     font-weight: 600;

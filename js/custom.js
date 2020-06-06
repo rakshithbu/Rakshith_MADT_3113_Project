@@ -118,7 +118,20 @@ function validateRegistration(){
             $("#emailError").text("");
         }, 6000);
         return false;
+    }else {
+
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!re.test(String($("#emailId").val()).toLowerCase())) {
+            $("#emailError").show();
+            $("#emailError").text("Please enter correct email-id format");
+            setTimeout(function () {
+                $("#emailError").hide();
+                $("#emailError").text("");
+            }, 6000);
+            return false;
+        }
     }
+
     if($("#gender").val() === ""){
         $("#genderError").show();
         $("#genderError").text("Please select your gender");
@@ -143,6 +156,16 @@ function validateRegistration(){
         setTimeout(function(){
             $("#passwordError").hide();
             $("#passwordError").text("");
+        }, 6000);
+        return false;
+    }
+
+    if($('#fictionCheck:checkbox:checked').length=== 0){
+        $("#fictionCheckError").show();
+        $("#fictionCheckError").text("Please check the checkbox");
+        setTimeout(function(){
+            $("#fictionCheckError").hide();
+            $("#fictionCheckError").text("");
         }, 6000);
         return false;
     }
@@ -279,4 +302,6 @@ function viewAllActivities() {
     $("#table").show();
 }
 
-
+function clearForm(){
+    $('#myForm').trigger("reset");
+}
