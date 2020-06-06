@@ -132,24 +132,26 @@ function validateRegistration(){
         }
     }
 
-    if($("#gender").val() === ""){
-        $("#genderError").show();
-        $("#genderError").text("Please select your gender");
-        setTimeout(function(){
-            $("#genderError").hide();
-            $("#genderError").text("");
-        }, 6000);
-        return false;
-    }
-    if($("input[name='gender']:checked").val() === "undefined"){
+    if($("input[name='gender']:checked").length === 0){
         $("#dateError").show();
-        $("#dateError").text("Please enter your date of birth");
+        $("#dateError").text("Please select you gender");
         setTimeout(function(){
             $("#dateError").hide();
             $("#dateError").text("");
         }, 6000);
         return false;
     }
+
+    if($("#date").val() === ""){
+        $("#dateError").show();
+        $("#dateError").text("Please enter your password");
+        setTimeout(function(){
+            $("#dateError").hide();
+            $("#dateError").text("");
+        }, 6000);
+        return false;
+    }
+
     if($("#password").val() === ""){
         $("#passwordError").show();
         $("#passwordError").text("Please enter your password");

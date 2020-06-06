@@ -56,7 +56,6 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-
                             </div>
                             <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                 <ul class="list-unstyled nav1 cl-effect-10">
@@ -91,12 +90,18 @@
                     <article class="card-body">
                         <form id="myForm">
                             <div class="form-row">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                         aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                                        <span class="sr-only">70% Complete</span>
+
+                                <div class="col form-group">
+                                    <label>Form Progress </label>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar"
+                                             aria-valuemin="0" aria-valuemax="100" style="width:0%" >
+
+                                        </div>
                                     </div>
                                 </div>
+
+
 
                                 <div class="col form-group">
                                     <label>Name </label>
@@ -201,7 +206,22 @@
             autoclose: true,
         };
         $('#date').datepicker(options);
+
+        $(".form-control,.form-check-input ").change(function() {
+            var pbVal = 0;
+            if ($("#firstName").val().length > 0) pbVal += 16.66;
+            if ($("#lastName").val().length > 0) pbVal += 16.66;
+            if ($("#emailId").val().length > 0) pbVal += 16.66;
+            if ($("#password").val().length > 0) pbVal += 16.66;
+            if ($("#date").val().length > 0) pbVal += 16.66;
+            if($("input[name='gender']:checked").length ===1)pbVal += 16.66;
+            $('.progress-bar').css('width', pbVal+"%");
+            return false;
+        });
+
     });
+
+
 </script>
 </body>
 
