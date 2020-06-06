@@ -9,19 +9,13 @@ $(document).ready(function () {
             $('#back-to-top').fadeOut();
         }
     });
+
     $('#back-to-top').click(function () {
         $("html, body").animate({scrollTop: 0}, 600);
         return false;
     });
 
-    var options={
-        format: 'mm/dd/yyyy',
-        todayHighlight: true,
-        autoclose: true,
-    };
-    $('#date').datepicker(options);
-
-})
+});
 
 
 
@@ -88,6 +82,7 @@ function registerUser() {
                     }, 6000);
                 }else{
                     objectStore.add({firstName:$("#firstName").val(),lastName:$("#lastName").val(),emailId:$("#emailId").val(),sex:$("input[name='gender']:checked").val(),dob:$("#date").val(),password:$("#password").val() });
+                    alert("Succesfully Registered " + $("#firstName").val()+" "+$("#lastName").val());
                 }
             };
         }
@@ -195,7 +190,28 @@ function booknow(){
 
 function book(){
     var db = request.result;
-    let transaction = db.transaction(['messages'], 'readwrite');
-    let objectStore = transaction.objectStore('messages');
-    objectStore.add({name:$("#name").val(),message:$("#message").val(),emailId:$("#emailId").val()});
+    let transaction = db.transaction(['registration'], 'readwrite');
+    let objectStore = transaction.objectStore('registration');
+    if ('getAll' in objectStore) {
+        objectStore.getAll().onsuccess = function(event) {
+            let arrayOfResult = event.target.result;
+            var flag = false;
+            arrayOfResult.forEach(function(element, index) {
+                if(element.emailId === $("#emailId").val()){
+                    flag = true;
+                }
+            });
+
+            if(!flag){
+                alert("This user does not exists. Please register and try again");
+            }else{
+
+                let transaction1 = db.transaction(['bookRoom'], 'readwrite');
+                let objectStore1 = transaction1.objectStore('bookRoom');
+                objectStore1.add({emailId:$("#emailId").val(),roomType:$("#roomType").val(),numberOfDays:$("#numberOfDays").val()});
+                alert("Room booked successfully");
+            }
+        };    }
+
+
 }
