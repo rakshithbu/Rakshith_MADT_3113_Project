@@ -182,7 +182,8 @@ function sendQuery(){
     let transaction = db.transaction(['messages'], 'readwrite');
     let objectStore = transaction.objectStore('messages');
     objectStore.add({name:$("#name").val(),message:$("#message").val(),emailId:$("#emailId").val()});
-}
+    alert("Message has been sent successfully");
+    }
 
 function booknow(){
     window.location.href = "bookRoom.html";
@@ -215,3 +216,67 @@ function book(){
 
 
 }
+
+
+function viewAllActivities() {
+    var db = request.result;
+    let transaction = db.transaction(['registration'], 'readwrite');
+    let objectStore = transaction.objectStore('registration');
+    if ('getAll' in objectStore) {
+        // IDBObjectStore.getAll() will return the full set of items in our store.
+        objectStore.getAll().onsuccess = function (event) {
+            let arrayOfResult = event.target.result;
+            var flag = false;
+            var name = '';
+            var html = ""
+            arrayOfResult.forEach(function (element, index) {
+                html += "<tr>";
+                html += "<td> Registration</td>";
+                html += "<td>" + element.firstName + " " + element.lastName + " with email address " + element.emailId + " has succesfully registered. </td>";
+                html += "</tr>";
+            });
+            $("#table").append(html);
+        };
+    }
+        let transaction1 = db.transaction(['messages'], 'readwrite');
+        let objectStore1 = transaction1.objectStore('messages');
+        if ('getAll' in objectStore1) {
+            // IDBObjectStore.getAll() will return the full set of items in our store.
+            objectStore1.getAll().onsuccess = function (event) {
+                let arrayOfResult = event.target.result;
+                var flag = false;
+                var name = '';
+                var html = ""
+                arrayOfResult.forEach(function (element, index) {
+                    html += "<tr>";
+                    html += "<td> Query Raise</td>";
+                    html += "<td>" + element.name + "  with email address " + element.emailId + " has written message :  "+element.message+". </td>";
+                    html += "</tr>";
+                });
+                $("#table").append(html);
+            };
+        }
+
+    let transaction2 = db.transaction(['bookRoom'], 'readwrite');
+    let objectStore2 = transaction2.objectStore('bookRoom');
+    if ('getAll' in objectStore2) {
+        // IDBObjectStore.getAll() will return the full set of items in our store.
+        objectStore2.getAll().onsuccess = function (event) {
+            let arrayOfResult = event.target.result;
+            var flag = false;
+            var name = '';
+            var html = ""
+            arrayOfResult.forEach(function (element, index) {
+                html += "<tr>";
+                html += "<td> Room Book</td>";
+                html += "<td>"+ element.emailId + " has booked "+element.roomType+" for "+element.numberOfDays+" days. </td>";
+                html += "</tr>";
+            });
+            $("#table").append(html);
+        };
+    }
+
+    $("#table").show();
+}
+
+
